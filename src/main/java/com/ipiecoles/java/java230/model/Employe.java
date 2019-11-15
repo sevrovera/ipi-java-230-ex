@@ -5,8 +5,16 @@ import org.joda.time.LocalDate;
 
 import java.util.Objects;
 
-public abstract class Employe {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public /*abstract*/ class Employe {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id;
 
 	private String nom;
@@ -40,7 +48,7 @@ public abstract class Employe {
 		return Entreprise.NB_CONGES_BASE;
 	}
 	
-	public abstract Double getPrimeAnnuelle();
+	// public abstract Double getPrimeAnnuelle();
 
 	public void augmenterSalaire(Double pourcentage) {
 		this.salaire = this.getSalaire() * (1 + pourcentage);
